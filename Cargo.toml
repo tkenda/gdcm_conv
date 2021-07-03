@@ -1,6 +1,6 @@
 [package]
 name = "gdcm_conv"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Kenda <info@idria.com.ar>"]
 edition = "2018"
 description = "Grassroots DICOM Library wrapper"
