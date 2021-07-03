@@ -1,0 +1,19 @@
+[package]
+name = "gdcm_conv"
+version = "0.1.1"
+authors = ["Kenda <info@idria.com.ar>"]
+edition = "2018"
+description = "Grassroots DICOM Library wrapper"
+build = "build.rs"
+license = "MIT"
+homepage = "http://www.idria.com.ar"
+repository = "https://github.com/idria/gdcm_conv"
+keywords = ["GDCM", "gdcmconv", "DICOM"]
+
+[build-dependencies]
+cmake = "0.1"
+cc = "1.0"
+
+[dependencies]
+libc = "0.2"
+thiserror = "1.0.25"
