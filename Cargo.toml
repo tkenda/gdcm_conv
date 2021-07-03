@@ -1,6 +1,6 @@
 [package]
 name = "gdcm_conv"
-version = "0.1.4"
+version = "0.1.5"
 authors = ["Kenda <info@idria.com.ar>"]
 edition = "2018"
 description = "Grassroots DICOM Library wrapper"
@@ -9,6 +9,7 @@ license = "MIT"
 homepage = "http://www.idria.com.ar"
 repository = "https://github.com/idria/gdcm_conv"
 keywords = ["GDCM", "gdcmconv", "DICOM"]
+documentation = "https://docs.rs/gdcm_conv"
 
 [build-dependencies]
 cmake = "0.1"
