@@ -9,6 +9,10 @@ license = "MIT"
 homepage = "http://www.idria.com.ar"
 repository = "https://github.com/idria/gdcm_conv"
 keywords = ["GDCM", "gdcmconv", "DICOM"]
+exclude = [
+    "output.dcm",
+    "GDCM/*",
+]
 
 [build-dependencies]
 cmake = "0.1"
