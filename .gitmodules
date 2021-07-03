@@ -1,0 +1,3 @@
+[submodule "GDCM"]
+	path = GDCM
+	url = https://github.com/idria/GDCM
