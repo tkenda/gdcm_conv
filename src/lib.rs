@@ -55,11 +55,11 @@
 //!
 //! ## How it works
 //!
-//! The gdcm_conv library takes as input the content of the DICOM file (source: Vec<u8>). It reuse the source vector and
-//! allocate an estimated size to avoid duplicated memory. Because it don't know if it is going to compress or uncompress
-//! the final image, the default estimated length is of 3 * input file size. Is recommended to use an estimated calculation.
-//! If the allocated size is not enough, the library will re-allocate to the correct size and execute the transcoding, but
-//! it is running two times.
+//! The gdcm_conv library takes as input the content of the DICOM file. It reuse the source vector allocating an estimated
+//! size to avoid cloned memory. The default estimad length is 3 times the input file size, the worst case, changing from
+//! a compressed image (like JPEG2000) to raw. Is recommended to use an estimated calculation, to minimize memory allocation.
+//! 
+//! If the allocated size is not enough, the library will re-allocate to the correct size and execute the FFI function again.
 //!
 //! To estimate the output length you could use this aproximation:
 //!
@@ -85,13 +85,15 @@
 //!
 //! let estimad_length = (a * b * rows * columns * number_of_frames) + MAX_HEADER_SIZE;
 //!
-//! To execute the DICOM file conversion, it works like a pipeline with a first transfer syntax conversion (PRE-TRANSFER),
-//! a photometric conversion and a final transfer syntax conversion (POST-TRANSFER). If you set to None it don't execute
-//! the step. Usually, you will use only the first and/or second step.
+//! The library works as a pipeline with a first transfer syntax conversion (PRE-TRANSFER), a photometric conversion 
+//! and a final transfer syntax conversion (POST-TRANSFER). If you set to None it don't execute the step. 
+//! Usually, you will use only the first and/or second step.
 //!
-//! In case you need to convert from JPEG Baseline (Process 1) 1.2.840.10008.1.2.4.50 with YBR_FULL or YBR_FULL_422 to JPEG2000
-//! lossles, you must first change to Explicit Little Endian transfer syntax, then to an RGB photometric interpretation and
-//! finally to JPG2000, to avoid color interpretation issue.
+//! I setup this way because in some cases is needed two transfer syntax transcoding like this example:
+//! 
+//! The conversion from JPEG Baseline (Process 1) 1.2.840.10008.1.2.4.50 with YBR_FULL or YBR_FULL_422 to JPEG2000
+//! lossles, you need to change to Explicit Little Endian transfer syntax, then to an RGB photometric interpretation and
+//! finally to JPG2000, to avoid GDCM color interpretation issue.
 //!
 
 use libc::{c_char, c_int, c_uchar, c_uint, size_t};
