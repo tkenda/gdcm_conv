@@ -63,12 +63,13 @@ it is running two times.
 
 To estimate the output length you could use this aproximation:
 
-(0028,0100) bits_allocated
-(0028,0004) photometric_interpretation
-(0028,0008) number_of_frames
-(0028,0010) rows
-(0028,0011) columns
+- (0028,0100) bits_allocated
+- (0028,0004) photometric_interpretation
+- (0028,0008) number_of_frames
+- (0028,0010) rows
+- (0028,0011) columns
 
+```
 // MAX HEADER SIZE
 const MAX_HEADER_SIZE: usize = 5000;
 
@@ -84,6 +85,7 @@ let b = match photometric_interpretation {
 };
 
 let estimad_length = (a * b * rows * columns * number_of_frames) + MAX_HEADER_SIZE;
+```
 
 To execute the DICOM file conversion, it works like a pipeline with a first transfer syntax conversion (PRE-TRANSFER),
 a photometric conversion and a final transfer syntax conversion (POST-TRANSFER). If you set to None it don't execute
