@@ -134,7 +134,37 @@ ProcResp change_photometric(
             change.SetPhotometricInterpretation(gdcm::PhotometricInterpretation::MONOCHROME2);
             break;
         case 3:
+            change.SetPhotometricInterpretation(gdcm::PhotometricInterpretation::PALETTE_COLOR);
+            break;
+        case 4:
             change.SetPhotometricInterpretation(gdcm::PhotometricInterpretation::RGB);
+            break;
+        case 5:
+            change.SetPhotometricInterpretation(gdcm::PhotometricInterpretation::HSV);
+            break;
+        case 6:
+            change.SetPhotometricInterpretation(gdcm::PhotometricInterpretation::ARGB);
+            break;
+        case 7:
+            change.SetPhotometricInterpretation(gdcm::PhotometricInterpretation::CMYK);
+            break;
+        case 8:
+            change.SetPhotometricInterpretation(gdcm::PhotometricInterpretation::YBR_FULL);
+            break;
+        case 9:
+            change.SetPhotometricInterpretation(gdcm::PhotometricInterpretation::YBR_FULL_422);
+            break;
+        case 10:
+            change.SetPhotometricInterpretation(gdcm::PhotometricInterpretation::YBR_PARTIAL_422);
+            break;
+        case 11:
+            change.SetPhotometricInterpretation(gdcm::PhotometricInterpretation::YBR_PARTIAL_420);
+            break;
+        case 12:
+            change.SetPhotometricInterpretation(gdcm::PhotometricInterpretation::YBR_ICT);
+            break;
+        case 13:
+            change.SetPhotometricInterpretation(gdcm::PhotometricInterpretation::YBR_RCT);
             break;
         default:
             proc_resp.status = 0x02;

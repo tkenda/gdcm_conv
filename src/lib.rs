@@ -206,7 +206,17 @@ pub enum PhotometricInterpretation {
     None,
     Monochrome1,
     Monochrome2,
+    PaletteColor,
     RGB,
+    HSV,
+    ARGB,
+    CMYK,
+    YbrFull,
+    YbrFull422,
+    YbrPartial422,
+    YbrPartial420,
+    YbrIct,
+    YbrRct,
 }
 
 impl PhotometricInterpretation {
@@ -215,7 +225,17 @@ impl PhotometricInterpretation {
             PhotometricInterpretation::None => 0,
             PhotometricInterpretation::Monochrome1 => 1,
             PhotometricInterpretation::Monochrome2 => 2,
-            PhotometricInterpretation::RGB => 3,
+            PhotometricInterpretation::PaletteColor => 3,
+            PhotometricInterpretation::RGB => 4,
+            PhotometricInterpretation::HSV => 5,
+            PhotometricInterpretation::ARGB => 6,
+            PhotometricInterpretation::CMYK => 7,
+            PhotometricInterpretation::YbrFull => 8,
+            PhotometricInterpretation::YbrFull422 => 9,
+            PhotometricInterpretation::YbrPartial422 => 10,
+            PhotometricInterpretation::YbrPartial420 => 11,
+            PhotometricInterpretation::YbrIct => 12,
+            PhotometricInterpretation::YbrRct => 13,
         }
     }
 }
