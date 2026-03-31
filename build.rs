@@ -19,7 +19,7 @@ fn build() {
 
     // Set GDCM include path
     let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
-    let include_dir = out_path.join("include").join("gdcm-3.1");
+    let include_dir = out_path.join("include").join("gdcm-3.3");
 
     // Create library
     cc::Build::new().file("convert.cc")
@@ -72,7 +72,7 @@ fn build() {
 
     // Set GDCM include path
     let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
-    let include_dir = out_path.join("include").join("gdcm-3.1");
+    let include_dir = out_path.join("include").join("gdcm-3.3");
 
     // Create library
     cc::Build::new().file("convert.cc")
@@ -127,7 +127,7 @@ fn build() {
 
     // Set GDCM include path
     let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
-    let include_dir = out_path.join("include").join("gdcm-3.1");
+    let include_dir = out_path.join("include").join("gdcm-3.3");
 
     // Create library
     cc::Build::new().file("convert.cc")
@@ -168,12 +168,12 @@ fn main() {
     println!("cargo:rerun-if-changed=.");
 
     // Unset DESTDIR envar to avoid others libs destinations
-    env::remove_var("DESTDIR");
+    unsafe { env::remove_var("DESTDIR") };
 
     // Update GIT
     if !Path::new("GDCM/.git").exists() {
         let _ = Command::new("git")
-            .args(&["submodule", "update", "--init"])
+            .args(["submodule", "update", "--init"])
             .status();
     }
 

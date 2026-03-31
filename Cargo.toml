@@ -1,20 +1,20 @@
 [package]
 name = "gdcm_conv"
-version = "0.1.7"
-authors = ["Kenda <info@idria.com.ar>"]
-edition = "2018"
+version = "0.2.0"
+authors = ["Tomas Kenda <tomaskenda@forzasoft.com.ar>"]
+edition = "2024"
 description = "Grassroots DICOM Library wrapper"
 build = "build.rs"
 license = "MIT"
-homepage = "http://www.idria.com.ar"
+homepage = "https://www.forzasoft.com.ar"
 repository = "https://github.com/idria/gdcm_conv"
 keywords = ["GDCM", "gdcmconv", "DICOM"]
 documentation = "https://docs.rs/gdcm_conv"
 
 [build-dependencies]
 cmake = "0.1"
-cc = "1.0"
+cc = "1.2"
 
 [dependencies]
 libc = "0.2"
-thiserror = "1.0.25"
+thiserror = "2.0"

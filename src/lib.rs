@@ -246,7 +246,7 @@ struct output_t {
     size: size_t,
 }
 
-extern "C" {
+unsafe extern "C" {
     fn c_convert(
         source_ptr: *const c_uchar,
         source_len: size_t,
@@ -271,7 +271,6 @@ pub fn pipeline(
     transfer_syntax_post: TransferSyntax,
 ) -> Result<Vec<u8>, GDCMError> {
     let mut ret;
-    let max_size;
 
     // Set lossy compression parameters
     let (is_lossy, quality1, quality2, quality3, irreversible, allow_error) =
@@ -326,14 +325,12 @@ pub fn pipeline(
         source.reserve(source.len() * 3);
     }
 
-    max_size = source.capacity();
-
     // Call C function
     ret = unsafe {
         c_convert(
             source.as_ptr(),
             source.len() as size_t,
-            max_size as size_t,
+            source.capacity() as size_t,
             transfer_syntax_pre.to_id(),
             transfer_syntax_post.to_id(),
             photometric_interpretation.to_id(),
